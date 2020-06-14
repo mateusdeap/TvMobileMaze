@@ -74,6 +74,17 @@ class ShowIndexView(
         }
     }
 
+    override fun inflateMenu(menu: Menu?, componentName: ComponentName): Boolean {
+        menuInflater.inflate(R.menu.options_menu, menu)
+
+        val searchManager = context().getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        (menu?.findItem(R.id.search)?.actionView as SearchView).apply {
+            setSearchableInfo(searchManager.getSearchableInfo(componentName))
+        }
+
+        return true
+    }
+
     private fun refreshShows() {
         for (listener in getListeners()) {
             listener.onRefreshClicked()

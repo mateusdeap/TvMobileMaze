@@ -45,6 +45,14 @@ class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
         fetchPage(1)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return showIndexView.inflateMenu(menu, componentName)
+    }
+
+    private fun searchForShow(query: String) {
+        Toast.makeText(this, query, Toast.LENGTH_LONG).show()
+    }
+
     private fun fetchPage(pageNumber: Int) {
         disposable = tvMazeApi.showList(pageNumber)
             .subscribeOn(Schedulers.io())
