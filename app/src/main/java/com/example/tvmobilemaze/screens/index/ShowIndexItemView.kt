@@ -34,7 +34,7 @@ class ShowIndexItemView(private val layoutInflater: LayoutInflater, private val 
         titleTextView.text = show.name
         genresTextView.text = show.genres.toString()
         Picasso.get()
-            .load(show.image.medium)
+            .load(show.image?.medium)
             .placeholder(R.drawable.placeholder_128dp)
             .error(R.drawable.placeholder_128dp)
             .into(posterImageView)
