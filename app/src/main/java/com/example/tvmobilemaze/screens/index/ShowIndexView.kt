@@ -1,17 +1,17 @@
 package com.example.tvmobilemaze.screens.index
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.app.SearchManager
+import android.content.ComponentName
+import android.content.Context
+import android.view.*
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tvmobilemaze.R
 import com.example.tvmobilemaze.Show
 import com.example.tvmobilemaze.screens.common.BaseObservableView
-import com.example.tvmobilemaze.screens.common.BaseView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.util.*
 
 class ShowIndexView(
     private val layoutInflater: LayoutInflater,

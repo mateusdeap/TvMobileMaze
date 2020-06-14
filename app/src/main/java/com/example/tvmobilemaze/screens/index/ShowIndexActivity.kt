@@ -1,7 +1,10 @@
 package com.example.tvmobilemaze.screens.index
 
+import android.app.SearchManager
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.widget.Toast
 import com.example.tvmobilemaze.Show
 import com.example.tvmobilemaze.TvMazeApi
