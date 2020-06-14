@@ -7,4 +7,7 @@ import retrofit2.http.Query
 interface TvMazeApi {
     @GET("/shows")
     fun showList(@Query("page") pageNumber: Int): Observable<List<Show>>
+
+    @GET("search/shows")
+    fun getShow(@Query("q") showName: String): Observable<List<ShowQueryItem>>
 }
