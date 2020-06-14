@@ -32,12 +32,27 @@ class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
         setContentView(showIndexView.rootView)
         showIndexView.registerListener(this)
 
+        handleSearchIntent(intent)
+
         tvMazeApi = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(TvMazeApi::class.java)
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        handleSearchIntent(intent)
+    }
+
+    private fun handleSearchIntent(intent: Intent?) {
+        if (Intent.ACTION_SEARCH == intent?.action) {
+            intent.getStringExtra(SearchManager.QUERY)?.also { query ->
+                searchForShow(query)
+            }
+        }
     }
 
     override fun onStart() {
