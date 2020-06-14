@@ -25,7 +25,9 @@ class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         showIndexView = ShowIndexView(
-            LayoutInflater.from(this), null
+            LayoutInflater.from(this),
+            null,
+            menuInflater
         )
         setContentView(showIndexView.rootView)
         showIndexView.registerListener(this)

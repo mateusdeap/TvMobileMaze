@@ -13,8 +13,11 @@ import com.example.tvmobilemaze.screens.common.BaseView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.util.*
 
-class ShowIndexView(private val layoutInflater: LayoutInflater, private val parent: ViewGroup?)
-    : BaseObservableView<IShowIndexView.ShowIndexListener>(), OnShowClickedListener, IShowIndexView,
+class ShowIndexView(
+    private val layoutInflater: LayoutInflater,
+    private val parent: ViewGroup?,
+    private val menuInflater: MenuInflater
+) : BaseObservableView<IShowIndexView.ShowIndexListener>(), OnShowClickedListener, IShowIndexView,
         View.OnClickListener {
 
     override val rootView: View = layoutInflater.inflate(R.layout.activity_show_index, parent, false)
