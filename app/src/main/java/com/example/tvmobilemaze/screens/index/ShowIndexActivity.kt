@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
 
-    private lateinit var showIndexView: ShowIndexView
+    private lateinit var showIndexView: IShowIndexView
 
     private lateinit var tvMazeApi: TvMazeApi
     private var disposable: Disposable? = null
