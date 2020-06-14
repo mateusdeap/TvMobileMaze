@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TvMobileMaze</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="placeholder_title">Show Title</string>
+    <string name="poster_goes_here">Poster goes here</string>
+    <string name="placeholder_genres">Genres:</string>
+    <string name="placeholder_summary">Summary</string>
+    <string name="oops_message">Oops! :(</string>
+</resources>
