@@ -8,4 +8,6 @@
     <string name="placeholder_genres">Genres:</string>
     <string name="placeholder_summary">Summary</string>
     <string name="oops_message">Oops! :(</string>
+    <string name="search_hint">Type a series name…</string>
+    <string name="search_title">Search</string>
 </resources>
