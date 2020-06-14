@@ -1,20 +1,23 @@
 package com.example.tvmobilemaze.screens.index
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.app.SearchManager
+import android.content.ComponentName
+import android.content.Context
+import android.view.*
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tvmobilemaze.R
 import com.example.tvmobilemaze.Show
 import com.example.tvmobilemaze.screens.common.BaseObservableView
-import com.example.tvmobilemaze.screens.common.BaseView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.util.*
 
-class ShowIndexView(private val layoutInflater: LayoutInflater, private val parent: ViewGroup?)
-    : BaseObservableView<IShowIndexView.ShowIndexListener>(), OnShowClickedListener, IShowIndexView,
+class ShowIndexView(
+    private val layoutInflater: LayoutInflater,
+    private val parent: ViewGroup?,
+    private val menuInflater: MenuInflater
+) : BaseObservableView<IShowIndexView.ShowIndexListener>(), OnShowClickedListener, IShowIndexView,
         View.OnClickListener {
 
     override val rootView: View = layoutInflater.inflate(R.layout.activity_show_index, parent, false)
@@ -69,6 +72,18 @@ class ShowIndexView(private val layoutInflater: LayoutInflater, private val pare
             R.id.next_page_fab -> goToNextPage()
             R.id.previous_page_fab -> goToPreviousPage()
         }
+    }
+
+    override fun inflateMenu(menu: Menu?, componentName: ComponentName): Boolean {
+        menuInflater.inflate(R.menu.options_menu, menu)
+
+        val searchManager = context().getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        (menu?.findItem(R.id.search)?.actionView as SearchView).apply {
+            setSearchableInfo(searchManager.getSearchableInfo(componentName))
+            isIconifiedByDefault = false
+        }
+
+        return true
     }
 
     private fun refreshShows() {

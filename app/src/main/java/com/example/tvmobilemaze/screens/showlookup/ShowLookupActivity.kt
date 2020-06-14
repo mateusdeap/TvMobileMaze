@@ -1,11 +1,11 @@
-package com.example.tvmobilemaze.screens.index
+package com.example.tvmobilemaze.screens.showlookup
 
 import android.app.SearchManager
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
-import android.widget.Toast
 import com.example.tvmobilemaze.Show
 import com.example.tvmobilemaze.TvMazeApi
 import com.example.tvmobilemaze.constants.Constants
@@ -17,23 +17,21 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
+class ShowLookupActivity : BaseActivity(), IShowLookupView.ShowLookupListener {
 
-    private lateinit var showIndexView: IShowIndexView
+    private lateinit var showLookupView: IShowLookupView
 
     private lateinit var tvMazeApi: TvMazeApi
     private var disposable: Disposable? = null
-    private var page: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        showIndexView = ShowIndexView(
+        showLookupView = ShowLookupView(
             LayoutInflater.from(this),
             null,
             menuInflater
         )
-        setContentView(showIndexView.rootView)
-        showIndexView.registerListener(this)
+        setContentView(showLookupView.rootView)
 
         tvMazeApi = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
@@ -41,47 +39,42 @@ class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(TvMazeApi::class.java)
+
+        handleSearchIntent(intent)
     }
 
-    override fun onStart() {
-        super.onStart()
-        fetchPage(1)
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        handleSearchIntent(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        return showIndexView.inflateMenu(menu, componentName)
+        return showLookupView.inflateMenu(menu, componentName)
     }
 
-    private fun fetchPage(pageNumber: Int) {
-        disposable = tvMazeApi.showList(pageNumber)
+    private fun handleSearchIntent(intent: Intent?) {
+        if (Intent.ACTION_SEARCH == intent?.action) {
+            intent.getStringExtra(SearchManager.QUERY)?.also { query ->
+                searchForShow(query)
+            }
+        }
+    }
+
+    private fun searchForShow(query: String) {
+        disposable = tvMazeApi.getShow(query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> showIndexView.showResults(result) },
-                { error -> showIndexView.showError(error) }
+                { result -> showLookupView.showQueryResults(result) },
+                { error -> showLookupView.showError(error) }
             )
     }
 
-    override fun onStop() {
-        super.onStop()
-        disposable?.dispose()
-    }
-
     override fun onShowClicked(show: Show) {
-        Toast.makeText(this, show.name, Toast.LENGTH_LONG).show()
+        TODO("Not yet implemented")
     }
 
-    override fun onRefreshClicked() {
-        fetchPage(page)
-    }
-
-    override fun goToNextPage() {
-        page += 1
-        fetchPage(page)
-    }
-
-    override fun goToPreviousPage() {
-        page -= 1
-        fetchPage(page)
+    override fun onBackClicked() {
+        TODO("Not yet implemented")
     }
 }
