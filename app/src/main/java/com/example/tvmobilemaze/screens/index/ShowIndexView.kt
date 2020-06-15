@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tvmobilemaze.R
-import com.example.tvmobilemaze.Show
+import com.example.tvmobilemaze.domain.Show
 import com.example.tvmobilemaze.screens.common.BaseObservableView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 

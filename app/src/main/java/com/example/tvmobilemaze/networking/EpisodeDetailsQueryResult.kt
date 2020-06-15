@@ -1,4 +1,8 @@
-package com.example.tvmobilemaze
+package com.example.tvmobilemaze.networking
+
+import com.example.tvmobilemaze.domain.Episode
+import com.example.tvmobilemaze.domain.Image
+import com.example.tvmobilemaze.domain.Show
 
 class EpisodeDetailsQueryResult(
     val id: Int,

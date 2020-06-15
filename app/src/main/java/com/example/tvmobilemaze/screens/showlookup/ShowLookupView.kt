@@ -8,8 +8,8 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tvmobilemaze.R
-import com.example.tvmobilemaze.Show
-import com.example.tvmobilemaze.ShowQueryItem
+import com.example.tvmobilemaze.domain.Show
+import com.example.tvmobilemaze.networking.ShowQueryItem
 import com.example.tvmobilemaze.screens.common.BaseObservableView
 import com.example.tvmobilemaze.screens.index.OnShowClickedListener
 import com.example.tvmobilemaze.screens.index.ShowListAdapter

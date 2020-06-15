@@ -2,12 +2,11 @@ package com.example.tvmobilemaze.screens.showlookup
 
 import android.app.SearchManager
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
-import com.example.tvmobilemaze.Show
-import com.example.tvmobilemaze.TvMazeApi
+import com.example.tvmobilemaze.domain.Show
+import com.example.tvmobilemaze.networking.TvMazeApi
 import com.example.tvmobilemaze.constants.Constants
 import com.example.tvmobilemaze.screens.common.BaseActivity
 import com.example.tvmobilemaze.screens.showdetails.ShowDetailsActivity

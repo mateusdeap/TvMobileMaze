@@ -3,8 +3,8 @@ package com.example.tvmobilemaze.screens.showdetails
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.example.tvmobilemaze.Episode
-import com.example.tvmobilemaze.TvMazeApi
+import com.example.tvmobilemaze.domain.Episode
+import com.example.tvmobilemaze.networking.TvMazeApi
 import com.example.tvmobilemaze.constants.Constants
 import com.example.tvmobilemaze.screens.common.BaseActivity
 import com.example.tvmobilemaze.screens.episodedetails.EpisodeDetailsActivity

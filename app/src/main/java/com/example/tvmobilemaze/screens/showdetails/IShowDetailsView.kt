@@ -1,7 +1,7 @@
 package com.example.tvmobilemaze.screens.showdetails
 
-import com.example.tvmobilemaze.Episode
-import com.example.tvmobilemaze.ShowDetailsQueryResult
+import com.example.tvmobilemaze.domain.Episode
+import com.example.tvmobilemaze.networking.ShowDetailsQueryResult
 import com.example.tvmobilemaze.screens.common.IObservableView
 
 interface IShowDetailsView : IObservableView<IShowDetailsView.ShowDetailsListener> {

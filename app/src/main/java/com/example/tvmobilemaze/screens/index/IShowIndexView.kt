@@ -2,7 +2,7 @@ package com.example.tvmobilemaze.screens.index
 
 import android.content.ComponentName
 import android.view.Menu
-import com.example.tvmobilemaze.Show
+import com.example.tvmobilemaze.domain.Show
 import com.example.tvmobilemaze.screens.common.IObservableView
 
 interface IShowIndexView : IObservableView<IShowIndexView.ShowIndexListener> {

@@ -1,4 +1,4 @@
-package com.example.tvmobilemaze
+package com.example.tvmobilemaze.domain
 
 class Schedule(val time: String, val days: List<String>) {
     override fun toString(): String {

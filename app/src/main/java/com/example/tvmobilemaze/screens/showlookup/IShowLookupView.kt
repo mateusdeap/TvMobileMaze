@@ -2,8 +2,8 @@ package com.example.tvmobilemaze.screens.showlookup
 
 import android.content.ComponentName
 import android.view.Menu
-import com.example.tvmobilemaze.Show
-import com.example.tvmobilemaze.ShowQueryItem
+import com.example.tvmobilemaze.domain.Show
+import com.example.tvmobilemaze.networking.ShowQueryItem
 import com.example.tvmobilemaze.screens.common.IObservableView
 
 interface IShowLookupView : IObservableView<IShowLookupView.ShowLookupListener> {
