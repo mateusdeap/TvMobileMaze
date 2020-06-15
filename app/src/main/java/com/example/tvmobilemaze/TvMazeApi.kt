@@ -14,4 +14,7 @@ interface TvMazeApi {
 
     @GET("/shows/{id}?embed[]=episodes&embed[]=seasons")
     fun showDetails(@Path("id") showId: Int): Observable<ShowDetailsQueryResult>
+
+    @GET("/episodes/{id}?embed=show")
+    fun episodeDetails(@Path("id") episodeId: Int): Observable<EpisodeDetailsQueryResult>
 }

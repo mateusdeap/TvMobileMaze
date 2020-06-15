@@ -1,13 +1,11 @@
-package com.example.tvmobilemaze.screens.showdetails
+package com.example.tvmobilemaze.screens.episodedetails
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.example.tvmobilemaze.Episode
+import com.example.tvmobilemaze.EpisodeDetailsQueryResult
 import com.example.tvmobilemaze.TvMazeApi
 import com.example.tvmobilemaze.constants.Constants
 import com.example.tvmobilemaze.screens.common.BaseActivity
-import com.example.tvmobilemaze.screens.episodedetails.EpisodeDetailsActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -15,22 +13,22 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ShowDetailsActivity : BaseActivity(), IShowDetailsView.ShowDetailsListener {
+class EpisodeDetailsActivity : BaseActivity(), IEpisodeDetailsView.EpisodeDetailsListener {
 
-    private lateinit var showDetailsView: IShowDetailsView
+    private lateinit var episodeDetailsView: IEpisodeDetailsView
 
     private lateinit var tvMazeApi: TvMazeApi
     private var disposable: Disposable? = null
 
-    private var showId: Int = 0
+    private var episodeId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        showDetailsView = ShowDetailsView(LayoutInflater.from(this), null, menuInflater)
-        setContentView(showDetailsView.rootView)
+        episodeDetailsView = EpisodeDetailsView(LayoutInflater.from(this), null, menuInflater)
+        setContentView(episodeDetailsView.rootView)
 
-        showId = intent.extras?.get("showId") as Int
+        episodeId = intent.extras?.get("episodeId") as Int
 
         tvMazeApi = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
@@ -42,20 +40,25 @@ class ShowDetailsActivity : BaseActivity(), IShowDetailsView.ShowDetailsListener
 
     override fun onStart() {
         super.onStart()
-        showDetailsView.registerListener(this)
-        disposable = tvMazeApi.showDetails(showId)
+        episodeDetailsView.registerListener(this)
+        fetchEpisode(episodeId)
+    }
+
+    private fun fetchEpisode(episodeId: Int) {
+        disposable = tvMazeApi.episodeDetails(episodeId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> showDetailsView.exhibitShowInfo(result) },
-                { error -> showDetailsView.showError(error) }
+                { result -> exhibitEpisodeDetails(result) },
+                { error -> episodeDetailsView.showError(error) }
             )
     }
 
-    override fun onEpisodeSelected(episode: Episode) {
-        val intent = Intent(this, EpisodeDetailsActivity::class.java).apply {
-            putExtra("episodeId", episode.id)
-        }
-        startActivity(intent)
+    private fun exhibitEpisodeDetails(result: EpisodeDetailsQueryResult) {
+        episodeDetailsView.bindEpisode(result.episode())
+    }
+
+    override fun onBackClicked() {
+        TODO("Not yet implemented")
     }
 }
