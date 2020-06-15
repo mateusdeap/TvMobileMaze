@@ -10,6 +10,7 @@ import com.example.tvmobilemaze.Show
 import com.example.tvmobilemaze.TvMazeApi
 import com.example.tvmobilemaze.constants.Constants
 import com.example.tvmobilemaze.screens.common.BaseActivity
+import com.example.tvmobilemaze.screens.showdetails.ShowDetailsActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -76,7 +77,10 @@ class ShowLookupActivity : BaseActivity(), IShowLookupView.ShowLookupListener {
     }
 
     override fun onShowClicked(show: Show) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, ShowDetailsActivity::class.java).apply {
+            putExtra("showId", show.id)
+        }
+        startActivity(intent)
     }
 
     override fun onBackClicked() {
