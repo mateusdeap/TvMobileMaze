@@ -21,17 +21,24 @@ class ShowDetailsView(
 
     override val rootView: View = layoutInflater.inflate(R.layout.activity_show_details, parent, false)
 
-    private val posterImageView: ImageView = findViewById(R.id.show_details_poster)
-    private val showNameTextView: TextView = findViewById(R.id.show_details_name)
-    private val showScheduleTextView: TextView = findViewById(R.id.show_details_schedule)
-    private val showGenresTextView: TextView = findViewById(R.id.show_details_genres)
-    private val showSummaryTextView: TextView = findViewById(R.id.show_details_summary)
-    private val seasonsExpandableList: ExpandableListView = findViewById(R.id.show_details_seasons_expandable_list)
+    private var posterImageView: ImageView
+    private var showNameTextView: TextView
+    private var showScheduleTextView: TextView
+    private var showGenresTextView: TextView
+    private var showSummaryTextView: TextView
+    private var seasonsExpandableList: ExpandableListView = findViewById(R.id.show_details_seasons_expandable_list)
 
-    private val seasonExpandableListAdapter: SeasonExpandableListAdapter = SeasonExpandableListAdapter(layoutInflater)
+    private val seasonExpandableListAdapter: SeasonExpandableListAdapter = SeasonExpandableListAdapter(layoutInflater, this)
 
     init {
+        val header: ViewGroup = layoutInflater.inflate(R.layout.show_details_header, seasonsExpandableList, false) as ViewGroup
+        seasonsExpandableList.addHeaderView(header)
         seasonsExpandableList.setAdapter(seasonExpandableListAdapter)
+        posterImageView = findViewById(R.id.show_details_poster)
+        showNameTextView = findViewById(R.id.show_details_name)
+        showScheduleTextView = findViewById(R.id.show_details_schedule)
+        showGenresTextView = findViewById(R.id.show_details_genres)
+        showSummaryTextView = findViewById(R.id.show_details_summary)
     }
 
     override fun exhibitShowInfo(showInfo: ShowDetailsQueryResult) {
