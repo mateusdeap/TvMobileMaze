@@ -14,4 +14,7 @@
     <string name="show_summary">Summary</string>
     <string name="placeholder_season_number">Season some_number</string>
     <string name="placeholder_episode_number_and_title">1 - The one with all the things</string>
+    <string name="placeholder_thumbnail_description">Episode thumbnail here</string>
+    <string name="placeholder_episode_number_and_name">1 - Episode Title Here</string>
+    <string name="placeholder_episode_details_season">Season 1</string>
 </resources>

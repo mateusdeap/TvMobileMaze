@@ -11,4 +11,8 @@ class Episode(
     override fun toString(): String {
         return "$number - $name"
     }
+
+    fun seasonToString(): String {
+        return "Season $season"
+    }
 }
