@@ -17,7 +17,8 @@ class ShowDetailsView(
     private val layoutInflater: LayoutInflater,
     private val parent: ViewGroup?,
     private val menuInflater: MenuInflater
-) : IShowDetailsView, BaseObservableView<IShowDetailsView.ShowDetailsListener>() {
+) : IShowDetailsView, BaseObservableView<IShowDetailsView.ShowDetailsListener>(),
+    IEpisodeClickedListener {
 
     override val rootView: View = layoutInflater.inflate(R.layout.activity_show_details, parent, false)
 
@@ -70,5 +71,11 @@ class ShowDetailsView(
         val seasons = embeddedInfo.seasons
         val episodes = embeddedInfo.episodes
         seasonExpandableListAdapter.bindShowInfo(seasons, episodes)
+    }
+
+    override fun onEpisodeClicked(episode: Episode) {
+        for (listener in getListeners()) {
+            listener.onEpisodeSelected(episode)
+        }
     }
 }

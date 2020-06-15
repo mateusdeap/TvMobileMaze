@@ -92,4 +92,8 @@ class SeasonExpandableListAdapter(
     override fun getGroupCount(): Int {
         return seasons.size
     }
+
+    override fun onEpisodeClicked(episode: Episode) {
+        episodeClickedListener.onEpisodeClicked(episode)
+    }
 }
