@@ -48,6 +48,11 @@ class ShowLookupActivity : BaseActivity(), IShowLookupView.ShowLookupListener {
         handleSearchIntent(intent)
     }
 
+    override fun onStart() {
+        super.onStart()
+        showLookupView.registerListener(this)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         return showLookupView.inflateMenu(menu, componentName)
     }
