@@ -10,4 +10,8 @@
     <string name="oops_message">Oops! :(</string>
     <string name="search_hint">Type a series name…</string>
     <string name="search_title">Search</string>
+    <string name="placeholder_schedule">Some week day at 22:00 pm</string>
+    <string name="show_summary">Summary</string>
+    <string name="placeholder_season_number">Season some_number</string>
+    <string name="placeholder_episode_number_and_title">1 - The one with all the things</string>
 </resources>
