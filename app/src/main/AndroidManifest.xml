@@ -22,9 +22,10 @@
 
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".screens.showlookup.ShowLookupActivity"/>
+                android:value=".screens.showlookup.ShowLookupActivity" />
         </activity>
-        <activity android:name=".screens.showlookup.ShowLookupActivity"
+        <activity
+            android:name=".screens.showlookup.ShowLookupActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
