@@ -6,8 +6,12 @@
     <string name="placeholder_title">Show Title</string>
     <string name="poster_goes_here">Poster goes here</string>
     <string name="placeholder_genres">Genres:</string>
-    <string name="placeholder_summary">Summary</string>
+    <string name="placeholder_summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non mi eu tellus molestie volutpat. Nullam sit amet ante in tortor lacinia scelerisque a eget orci. Integer lorem nisl, consectetur at finibus ac, auctor nec risus. Fusce at lacinia elit. Praesent leo nulla, scelerisque at mauris ac, imperdiet euismod odio. Suspendisse ultrices venenatis vehicula. Phasellus eget finibus mi. Aenean commodo erat enim, ac vestibulum nunc eleifend sed.</string>
     <string name="oops_message">Oops! :(</string>
     <string name="search_hint">Type a series name…</string>
     <string name="search_title">Search</string>
+    <string name="placeholder_schedule">Some week day at 22:00 pm</string>
+    <string name="show_summary">Summary</string>
+    <string name="placeholder_season_number">Season some_number</string>
+    <string name="placeholder_episode_number_and_title">1 - The one with all the things</string>
 </resources>

@@ -1,9 +1,11 @@
 package com.example.tvmobilemaze
 
-data class Show(
+data class ShowDetailsQueryResult(
     val id: Int,
     val name: String,
     val genres: List<String>,
+    val schedule: Schedule,
+    val image: Image?,
     val summary: String,
-    val image: Image?
+    val _embedded: Embedded
 )
