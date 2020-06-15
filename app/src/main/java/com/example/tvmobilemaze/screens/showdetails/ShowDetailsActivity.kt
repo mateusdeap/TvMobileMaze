@@ -1,11 +1,13 @@
 package com.example.tvmobilemaze.screens.showdetails
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import com.example.tvmobilemaze.Episode
 import com.example.tvmobilemaze.TvMazeApi
 import com.example.tvmobilemaze.constants.Constants
 import com.example.tvmobilemaze.screens.common.BaseActivity
+import com.example.tvmobilemaze.screens.episodedetails.EpisodeDetailsActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -51,6 +53,9 @@ class ShowDetailsActivity : BaseActivity(), IShowDetailsView.ShowDetailsListener
     }
 
     override fun onEpisodeSelected(episode: Episode) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, EpisodeDetailsActivity::class.java).apply {
+            putExtra("episodeId", episode.id)
+        }
+        startActivity(intent)
     }
 }
