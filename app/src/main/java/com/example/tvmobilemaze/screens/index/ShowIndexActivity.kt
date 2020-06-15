@@ -33,7 +33,6 @@ class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
             menuInflater
         )
         setContentView(showIndexView.rootView)
-        showIndexView.registerListener(this)
 
         tvMazeApi = Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
@@ -45,6 +44,7 @@ class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
 
     override fun onStart() {
         super.onStart()
+        showIndexView.registerListener(this)
         fetchPage(1)
     }
 
