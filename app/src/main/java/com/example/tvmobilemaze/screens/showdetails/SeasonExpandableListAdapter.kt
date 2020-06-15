@@ -9,7 +9,10 @@ import com.example.tvmobilemaze.Episode
 import com.example.tvmobilemaze.R
 import com.example.tvmobilemaze.Season
 
-class SeasonExpandableListAdapter(private val layoutInflater: LayoutInflater) : BaseExpandableListAdapter() {
+class SeasonExpandableListAdapter(
+    private val layoutInflater: LayoutInflater,
+    private val episodeClickedListener: IEpisodeClickedListener
+) : BaseExpandableListAdapter(), IEpisodeItemView.EpisodeItemListener {
 
     private var episodes: List<Episode> = ArrayList()
     private var seasons: List<Season> = ArrayList()
@@ -72,14 +75,13 @@ class SeasonExpandableListAdapter(private val layoutInflater: LayoutInflater) : 
         convertView: View?,
         parent: ViewGroup?
     ): View {
-        val newConvertView: View =
-            convertView ?: layoutInflater.inflate(R.layout.episode_item_layout, parent, false)
+        val episodeItemView = EpisodeItemView(layoutInflater, parent, convertView)
+        episodeItemView.bindEpisodeItem(
+            episodesPerSeason.getOrDefault(getGroup(groupPosition) as Season, emptyList())[childPosition]
+        )
+        episodeItemView.registerListener(this)
 
-        val episodeNumberAndTitle: TextView? = newConvertView.findViewById(R.id.episode_number_and_title)
-        episodeNumberAndTitle?.text = episodesPerSeason
-            .getOrDefault(getGroup(groupPosition) as Season, emptyList())[childPosition].toString()
-
-        return newConvertView
+        return episodeItemView.rootView
     }
 
     override fun getChildId(groupPosition: Int, childPosition: Int): Long {
