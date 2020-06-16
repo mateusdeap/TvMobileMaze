@@ -16,4 +16,6 @@ interface IShowIndexView : IObservableView<IShowIndexView.ShowIndexListener> {
     fun showResults(result: List<Show>?)
     fun showError(error: Throwable?)
     fun inflateMenu(menu: Menu?, componentName: ComponentName): Boolean
+    fun showLoading()
+    fun hideLoading()
 }

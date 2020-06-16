@@ -16,4 +16,6 @@ interface IShowLookupView : IObservableView<IShowLookupView.ShowLookupListener> 
     fun showQueryResults(showQueryReturn: List<ShowQueryItem>?)
     fun showError(error: Throwable?)
     fun inflateMenu(menu: Menu?, componentName: ComponentName): Boolean
+    fun showLoading()
+    fun hideLoading()
 }

@@ -5,6 +5,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.view.*
 import android.widget.SearchView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tvmobilemaze.R
@@ -22,6 +23,7 @@ class ShowLookupView(
     override val rootView: View = layoutInflater.inflate(R.layout.activity_show_lookup, parent, false)
 
     private val showList: RecyclerView? = findViewById(R.id.show_lookup_recycler_view)
+    private val loadingView: ConstraintLayout = findViewById(R.id.show_lookup_loading_view)
     private val showListAdapter: ShowListAdapter =
         ShowListAdapter(
             layoutInflater,
@@ -63,5 +65,13 @@ class ShowLookupView(
         }
 
         return true
+    }
+
+    override fun showLoading() {
+        loadingView.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        loadingView.visibility = View.INVISIBLE
     }
 }

@@ -52,13 +52,24 @@ class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
     }
 
     private fun fetchPage(pageNumber: Int) {
+        showIndexView.showLoading()
         disposable = tvMazeApi.showList(pageNumber)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> showIndexView.showResults(result) },
-                { error -> showIndexView.showError(error) }
+                { result -> exhibitResults(result) },
+                { error -> exhibitError(error) }
             )
+    }
+
+    private fun exhibitError(error: Throwable?) {
+        showIndexView.hideLoading()
+        showIndexView.showError(error)
+    }
+
+    private fun exhibitResults(result: List<Show>?) {
+        showIndexView.hideLoading()
+        showIndexView.showResults(result)
     }
 
     override fun onStop() {
