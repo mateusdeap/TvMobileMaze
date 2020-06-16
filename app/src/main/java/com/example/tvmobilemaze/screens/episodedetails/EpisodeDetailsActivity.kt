@@ -2,8 +2,8 @@ package com.example.tvmobilemaze.screens.episodedetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.example.tvmobilemaze.EpisodeDetailsQueryResult
-import com.example.tvmobilemaze.TvMazeApi
+import com.example.tvmobilemaze.networking.EpisodeDetailsQueryResult
+import com.example.tvmobilemaze.networking.TvMazeApi
 import com.example.tvmobilemaze.constants.Constants
 import com.example.tvmobilemaze.screens.common.BaseActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers

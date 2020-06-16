@@ -1,5 +1,6 @@
-package com.example.tvmobilemaze
+package com.example.tvmobilemaze.networking
 
+import com.example.tvmobilemaze.domain.Show
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

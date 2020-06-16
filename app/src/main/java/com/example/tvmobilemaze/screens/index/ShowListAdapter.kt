@@ -3,7 +3,7 @@ package com.example.tvmobilemaze.screens.index
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tvmobilemaze.Show
+import com.example.tvmobilemaze.domain.Show
 import java.util.*
 
 class ShowListAdapter(private val layoutInflater: LayoutInflater, private val onShowClickedListener: OnShowClickedListener)

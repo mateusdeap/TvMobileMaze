@@ -1,6 +1,6 @@
 package com.example.tvmobilemaze.screens.showdetails
 
-import com.example.tvmobilemaze.Episode
+import com.example.tvmobilemaze.domain.Episode
 import com.example.tvmobilemaze.screens.common.IObservableView
 
 interface IEpisodeItemView : IObservableView<IEpisodeItemView.EpisodeItemListener> {

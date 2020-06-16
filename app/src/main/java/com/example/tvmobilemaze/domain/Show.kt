@@ -1,4 +1,4 @@
-package com.example.tvmobilemaze
+package com.example.tvmobilemaze.domain
 
 data class Show(
     val id: Int,

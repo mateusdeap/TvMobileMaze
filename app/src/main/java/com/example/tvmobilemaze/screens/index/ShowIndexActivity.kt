@@ -1,13 +1,11 @@
 package com.example.tvmobilemaze.screens.index
 
-import android.app.SearchManager
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
-import android.widget.Toast
-import com.example.tvmobilemaze.Show
-import com.example.tvmobilemaze.TvMazeApi
+import com.example.tvmobilemaze.domain.Show
+import com.example.tvmobilemaze.networking.TvMazeApi
 import com.example.tvmobilemaze.constants.Constants
 import com.example.tvmobilemaze.screens.common.BaseActivity
 import com.example.tvmobilemaze.screens.showdetails.ShowDetailsActivity
@@ -54,13 +52,24 @@ class ShowIndexActivity : BaseActivity(), IShowIndexView.ShowIndexListener {
     }
 
     private fun fetchPage(pageNumber: Int) {
+        showIndexView.showLoading()
         disposable = tvMazeApi.showList(pageNumber)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> showIndexView.showResults(result) },
-                { error -> showIndexView.showError(error) }
+                { result -> exhibitResults(result) },
+                { error -> exhibitError(error) }
             )
+    }
+
+    private fun exhibitError(error: Throwable?) {
+        showIndexView.hideLoading()
+        showIndexView.showError(error)
+    }
+
+    private fun exhibitResults(result: List<Show>?) {
+        showIndexView.hideLoading()
+        showIndexView.showResults(result)
     }
 
     override fun onStop() {

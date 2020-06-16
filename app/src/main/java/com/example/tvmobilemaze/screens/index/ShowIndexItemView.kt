@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.tvmobilemaze.R
-import com.example.tvmobilemaze.Show
+import com.example.tvmobilemaze.domain.Show
 import com.example.tvmobilemaze.screens.common.BaseObservableView
-import com.example.tvmobilemaze.screens.common.BaseView
 import com.squareup.picasso.Picasso
 
 class ShowIndexItemView(private val layoutInflater: LayoutInflater, private val parent: ViewGroup)

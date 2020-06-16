@@ -2,13 +2,13 @@ package com.example.tvmobilemaze.screens.showlookup
 
 import android.app.SearchManager
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
-import com.example.tvmobilemaze.Show
-import com.example.tvmobilemaze.TvMazeApi
+import com.example.tvmobilemaze.domain.Show
+import com.example.tvmobilemaze.networking.TvMazeApi
 import com.example.tvmobilemaze.constants.Constants
+import com.example.tvmobilemaze.networking.ShowQueryItem
 import com.example.tvmobilemaze.screens.common.BaseActivity
 import com.example.tvmobilemaze.screens.showdetails.ShowDetailsActivity
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -67,13 +67,24 @@ class ShowLookupActivity : BaseActivity(), IShowLookupView.ShowLookupListener {
     }
 
     private fun searchForShow(query: String) {
+        showLookupView.showLoading()
         disposable = tvMazeApi.getShow(query)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result -> showLookupView.showQueryResults(result) },
-                { error -> showLookupView.showError(error) }
+                { result -> exhibitResults(result) },
+                { error -> exhibitError(error) }
             )
+    }
+
+    private fun exhibitError(error: Throwable?) {
+        showLookupView.hideLoading()
+        showLookupView.showError(error)
+    }
+
+    private fun exhibitResults(result: List<ShowQueryItem>) {
+        showLookupView.hideLoading()
+        showLookupView.showQueryResults(result)
     }
 
     override fun onShowClicked(show: Show) {

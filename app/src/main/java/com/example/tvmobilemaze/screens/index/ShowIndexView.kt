@@ -6,10 +6,11 @@ import android.content.Context
 import android.view.*
 import android.widget.SearchView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tvmobilemaze.R
-import com.example.tvmobilemaze.Show
+import com.example.tvmobilemaze.domain.Show
 import com.example.tvmobilemaze.screens.common.BaseObservableView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -33,6 +34,7 @@ class ShowIndexView(
     private val nextPageFab: FloatingActionButton = findViewById(R.id.next_page_fab)
     private val previousPageFab: FloatingActionButton = findViewById(R.id.previous_page_fab)
     private val refreshFab: FloatingActionButton = findViewById(R.id.refresh_fab)
+    private val loadingView: ConstraintLayout = findViewById(R.id.show_index_loading_view)
 
     init {
         showList?.layoutManager = LinearLayoutManager(context())
@@ -84,6 +86,14 @@ class ShowIndexView(
         }
 
         return true
+    }
+
+    override fun showLoading() {
+        loadingView.visibility = View.VISIBLE
+    }
+
+    override fun hideLoading() {
+        loadingView.visibility = View.INVISIBLE
     }
 
     private fun refreshShows() {

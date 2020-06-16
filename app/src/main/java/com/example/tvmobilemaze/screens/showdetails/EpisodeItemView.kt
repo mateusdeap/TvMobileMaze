@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import com.example.tvmobilemaze.Episode
+import com.example.tvmobilemaze.domain.Episode
 import com.example.tvmobilemaze.R
 import com.example.tvmobilemaze.screens.common.BaseObservableView
 

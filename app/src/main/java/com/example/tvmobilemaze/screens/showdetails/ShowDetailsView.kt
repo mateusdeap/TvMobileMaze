@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.ExpandableListView
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.tvmobilemaze.Embedded
-import com.example.tvmobilemaze.Episode
+import com.example.tvmobilemaze.networking.Embedded
+import com.example.tvmobilemaze.domain.Episode
 import com.example.tvmobilemaze.R
-import com.example.tvmobilemaze.ShowDetailsQueryResult
+import com.example.tvmobilemaze.networking.ShowDetailsQueryResult
 import com.example.tvmobilemaze.screens.common.BaseObservableView
 import com.squareup.picasso.Picasso
 
